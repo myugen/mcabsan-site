@@ -4,15 +4,28 @@ import PropTypes from "prop-types"
 
 import SocialSpace from "./social-space"
 
-const Footer = ({ location, social }) => (
-  <footer>
-    <Container p={2} sx={{ textAlign: "center" }}>
+const Info = ({ location }) => {
+  return (
+    <div>
       © {new Date().getFullYear()}, Built with 🍌 in <u>{location}</u> using
       {` `}
       <Link href="https://www.gatsbyjs.org">Gatsby</Link>
-    </Container>
-    <Container px={2}>
+    </div>
+  )
+}
+
+const Footer = ({ location, social }) => (
+  <footer>
+    <Container px={2} paddingTop={2} paddingBottom={1}>
       <SocialSpace {...social} />
+    </Container>
+    <Container
+      px={2}
+      paddingBottom={2}
+      paddingTop={1}
+      sx={{ textAlign: "center" }}
+    >
+      <Info location={location} />
     </Container>
   </footer>
 )
