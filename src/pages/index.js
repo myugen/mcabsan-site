@@ -1,5 +1,13 @@
 import React from "react"
+import { Styled } from "theme-ui"
+import Layout from "../components/layout"
 
-export default function Home() {
-  return <div>Hello world!</div>
+const Home = () => {
+  return (
+    <Layout>
+      <Styled.div>Hola mundo</Styled.div>
+    </Layout>
+  )
 }
+
+export default Home
