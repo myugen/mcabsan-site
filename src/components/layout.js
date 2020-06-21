@@ -13,14 +13,14 @@ const Layout = ({ children }) => {
   const { pathname } = useLocation()
 
   return (
-    <>
+    <Container sx={{ maxWidth: "1200px" }}>
       <SiteMetadata pathname={pathname} {...siteMetadata} />
       <Header title={siteMetadata.title} />
       <main>
         <Container p={4}>{children}</Container>
       </main>
-      <Footer location={siteMetadata.location} />
-    </>
+      <Footer location={siteMetadata.location} social={siteMetadata.social} />
+    </Container>
   )
 }
 
