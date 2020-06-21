@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
+import { getType } from "mime"
 
 const SiteMetadata = ({
   pathname,
@@ -37,8 +38,13 @@ const SiteMetadata = ({
         />
       ))}
 
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:site_name" content="mcabsan" />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:alt" content={title} />
+      <meta property="og:image:type" content={getType(image)} />
       {canRenderOgArticleMeta && <meta property="og:type" content="article" />}
 
       {canRenderTwitterMeta && (
@@ -51,6 +57,7 @@ const SiteMetadata = ({
       {canRenderTwitterMeta && (
         <meta name="twitter:description" content={description} />
       )}
+      {canRenderTwitterMeta && <meta name="twitter:site" content="mcabsan" />}
       {canRenderTwitterMeta && <meta name="twitter:image" content={imageUrl} />}
     </Helmet>
   )
