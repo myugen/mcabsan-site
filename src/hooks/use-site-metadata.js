@@ -9,6 +9,7 @@ export default function useSiteMetadata() {
           description
           author
           siteUrl
+          image
           social {
             twitter {
               user
