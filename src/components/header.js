@@ -1,9 +1,8 @@
-import React from "react"
+/** @jsx jsx */
+import { jsx, Styled, Flex, Box, useColorMode } from "theme-ui"
 import PropTypes from "prop-types"
-import { Styled, Flex, Box, useColorMode, Avatar } from "theme-ui"
 import moon from "../assets/moon.png"
 import sun from "../assets/sun.png"
-import me from "../assets/me.jpg"
 import Switch from "../components/switch"
 
 const ThemeSwitch = () => {
@@ -55,11 +54,8 @@ const Header = ({ title }) => {
   return (
     <header>
       <Flex sx={{ alignItems: "center" }}>
-        <Box p={2}>
-          <Avatar src={me} />
-        </Box>
-        <Box p={2} sx={{ flex: "1 1 auto", alignSelf: "center" }}>
-          <Styled.h1 sx={{ marginBottom: 0 }}>{title}</Styled.h1>
+        <Box p={2} sx={{ flex: "1 1 auto" }}>
+          <Styled.h1 sx={{ mb: "0px" }}>{title}</Styled.h1>
         </Box>
         <Box p={2}>
           <Styled.div>

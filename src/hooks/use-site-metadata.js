@@ -8,6 +8,7 @@ export default function useSiteMetadata() {
           title
           description
           author
+          location
           siteUrl
           image
           social {
