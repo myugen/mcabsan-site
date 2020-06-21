@@ -27,6 +27,7 @@ module.exports = {
   siteMetadata: {
     title: "Miguel<>Cabrera",
     author: "Miguel Cabrera",
+    location: "Canary Islands",
     description: "A space where organize Miguel's ideas",
     siteUrl: "https://mcabsan.dev",
     image: "/images/logo.jpg",

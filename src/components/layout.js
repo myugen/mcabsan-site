@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
       <main>
         <Container p={4}>{children}</Container>
       </main>
-      <Footer />
+      <Footer location={siteMetadata.location} />
     </>
   )
 }
