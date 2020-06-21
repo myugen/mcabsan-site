@@ -40,6 +40,10 @@ module.exports = {
         user: "Myugen",
         url: "https://github.com/Myugen",
       },
+      linkedin: {
+        user: "Miguel Ignacio Cabrera San Gil",
+        url: "https://linkedin.com/in/miguel-cabrera-san-gil",
+      },
     },
     googleFonts: ["Patua One", "Cabin Condensed"],
     keywords: [

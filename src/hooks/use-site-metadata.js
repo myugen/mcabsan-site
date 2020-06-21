@@ -20,6 +20,10 @@ export default function useSiteMetadata() {
               user
               url
             }
+            linkedin {
+              user
+              url
+            }
           }
           googleFonts
           keywords
