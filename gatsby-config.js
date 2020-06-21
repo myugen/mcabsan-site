@@ -19,7 +19,7 @@ module.exports = {
         background_color: "#000",
         theme_color: "#000",
         display: "standalone",
-        icon: "src/assets/me.jpg",
+        icon: "static/favicon.png",
         crossOrigin: "anonymous",
       },
     },
@@ -29,7 +29,7 @@ module.exports = {
     author: "Miguel Cabrera",
     description: "A space where organize Miguel's ideas",
     siteUrl: "https://mcabsan.dev",
-    image: "/assets/me.jpg",
+    image: "/images/logo.jpg",
     social: {
       twitter: {
         user: "@mcabsan",
