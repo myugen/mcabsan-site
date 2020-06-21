@@ -16,8 +16,6 @@ const theme = merge(toTheme(funston), {
       },
     },
   },
-  fontSize: [10, 12, 14, 16, 20, 24, 32, 48, 64, 72],
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   /*fonts: {
       body: "'Patua One', sans-serif",
       heading: "'Cabin Condensed', sans-serif",
@@ -35,5 +33,7 @@ const theme = merge(toTheme(funston), {
     fontSize: [12, 14, 16, 20, 24, 32, 48, 64, 72],
     space: [0, 4, 8, 16, 32, 64, 128, 256, 512],*/
 })
+
+console.log("theme", theme)
 
 export default theme
