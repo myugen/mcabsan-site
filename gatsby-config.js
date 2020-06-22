@@ -23,6 +23,15 @@ module.exports = {
         crossOrigin: "anonymous",
       },
     },
+    {
+      resolve: "gatsby-alias-imports",
+      options: {
+        pages: "src/pages",
+        components: "src/components",
+        hooks: "src/hooks",
+        assets: "src/assets",
+      },
+    },
   ],
   siteMetadata: {
     title: "Miguel<>Cabrera",

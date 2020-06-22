@@ -1,18 +1,9 @@
 /** @jsx jsx */
-import { jsx, Container, Link } from "theme-ui"
+import { jsx, Container } from "theme-ui"
 import PropTypes from "prop-types"
 
-import SocialSpace from "./social-space"
-
-const Info = ({ location }) => {
-  return (
-    <div>
-      © {new Date().getFullYear()}, Built with 🍌 in <u>{location}</u> using
-      {` `}
-      <Link href="https://www.gatsbyjs.org">Gatsby</Link>
-    </div>
-  )
-}
+import { SocialSpace } from "../common"
+import Info from "./info"
 
 const Footer = ({ location, social }) => (
   <footer>
