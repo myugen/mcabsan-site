@@ -16,9 +16,9 @@ const Layout = ({ children, metadata }) => {
   return (
     <Container sx={{ maxWidth: "1200px" }}>
       <SiteMetadata {...seo} />
-      <Header title={siteMetadata.title} />
+      <Header title={siteMetadata.title} menuLinks={siteMetadata.menuLinks} />
       <main>
-        <Container p={4}>{children}</Container>
+        <Container p={3}>{children}</Container>
       </main>
       <Footer location={siteMetadata.location} social={siteMetadata.social} />
     </Container>

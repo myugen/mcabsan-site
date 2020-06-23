@@ -1,31 +1,49 @@
 /** @jsx jsx */
-import { jsx, Styled, Flex, Box } from "theme-ui"
+import { jsx, Flex, Box } from "theme-ui"
+import { Link } from "gatsby"
 import PropTypes from "prop-types"
 
 import ThemeSwitch from "./theme-switch"
+import Menu from "./menu"
 
-
-
-
-const Header = ({ title }) => {
+const Header = ({ title, menuLinks }) => {
   return (
     <header>
-      <Flex sx={{ alignItems: "center" }}>
-        <Box p={2} sx={{ flex: "1 1 auto" }}>
-          <Styled.h1 sx={{ mb: "0px" }}>{title}</Styled.h1>
+      <Flex
+        p={2}
+        sx={{ alignItems: "center", justifyContent: "space-between" }}
+      >
+        <Box>
+          <Link
+            sx={{
+              color: "inherit",
+              textDecoration: "none",
+            }}
+            to="/"
+          >
+            <h1 sx={{ my: "0px" }}>{title}</h1>
+          </Link>
         </Box>
-        <Box p={2}>
-          <Styled.div>
+        <Box>
+          <Menu links={menuLinks} />
+        </Box>
+        <Box>
+          <div>
             <ThemeSwitch />
-          </Styled.div>
+          </div>
         </Box>
       </Flex>
     </header>
   )
 }
 
+Header.defaultProps = {
+  menuLinks: [],
+}
+
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  menuLinks: PropTypes.arrayOf(PropTypes.object),
 }
 
 export default Header

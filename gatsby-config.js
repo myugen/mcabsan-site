@@ -35,6 +35,16 @@ module.exports = {
   ],
   siteMetadata: {
     title: "Miguel<>Cabrera",
+    menuLinks: [
+      {
+        name: "Posts",
+        path: "/posts",
+      },
+      {
+        name: "About",
+        path: "/about",
+      },
+    ],
     author: "Miguel Cabrera",
     location: "Canary Islands",
     description: "A space where organize Miguel's ideas",

@@ -6,6 +6,10 @@ export default function useSiteMetadata() {
       site {
         siteMetadata {
           title
+          menuLinks {
+            name
+            path
+          }
           description
           author
           location
