@@ -23,9 +23,28 @@ module.exports = {
         crossOrigin: "anonymous",
       },
     },
+    {
+      resolve: "gatsby-alias-imports",
+      options: {
+        pages: "src/pages",
+        components: "src/components",
+        hooks: "src/hooks",
+        assets: "src/assets",
+      },
+    },
   ],
   siteMetadata: {
     title: "Miguel<>Cabrera",
+    menuLinks: [
+      {
+        name: "Posts",
+        path: "/posts",
+      },
+      {
+        name: "About",
+        path: "/about",
+      },
+    ],
     author: "Miguel Cabrera",
     location: "Canary Islands",
     description: "A space where organize Miguel's ideas",

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Box, Flex, Link } from "theme-ui"
+import { jsx, Box, Flex, Link } from "theme-ui"
 import PropTypes from "prop-types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {

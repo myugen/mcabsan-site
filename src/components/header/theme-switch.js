@@ -1,9 +1,9 @@
-/** @jsx jsx */
-import { jsx, Styled, Flex, Box, useColorMode } from "theme-ui"
-import PropTypes from "prop-types"
-import moon from "../assets/moon.png"
-import sun from "../assets/sun.png"
-import Switch from "../components/switch"
+import React from "react"
+import { useColorMode } from "theme-ui"
+
+import moon from "assets/moon.png"
+import sun from "assets/sun.png"
+import Switch from "../common/switch"
 
 const ThemeSwitch = () => {
   const iconCss = [{ pointerEvents: "none", margin: 4 }]
@@ -50,25 +50,4 @@ const ThemeSwitch = () => {
   )
 }
 
-const Header = ({ title }) => {
-  return (
-    <header>
-      <Flex sx={{ alignItems: "center" }}>
-        <Box p={2} sx={{ flex: "1 1 auto" }}>
-          <Styled.h1 sx={{ mb: "0px" }}>{title}</Styled.h1>
-        </Box>
-        <Box p={2}>
-          <Styled.div>
-            <ThemeSwitch />
-          </Styled.div>
-        </Box>
-      </Flex>
-    </header>
-  )
-}
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-}
-
-export default Header
+export default ThemeSwitch

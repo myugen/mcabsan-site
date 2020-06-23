@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Avatar } from "theme-ui"
 
-import Layout from "../components/layout"
-import me from "../assets/me.jpg"
+import me from "assets/me.jpg"
+import Layout from "components/layout"
 
 const Home = () => {
   return (
