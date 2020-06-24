@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { jsx, Flex, Box } from "theme-ui"
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
+import { string, object, arrayOf } from "prop-types"
 
 import ThemeSwitch from "./theme-switch"
 import Menu from "./menu"
+import MenuBurger from "./menu-burger"
 
 const Header = ({ title, menuLinks }) => {
   return (
@@ -24,13 +25,16 @@ const Header = ({ title, menuLinks }) => {
             <h1 sx={{ my: "0px" }}>{title}</h1>
           </Link>
         </Box>
-        <Box>
+        <Box sx={{ display: ["none", "block", "block"] }}>
           <Menu links={menuLinks} />
         </Box>
-        <Box>
+        <Box sx={{ display: ["none", "block", "block"] }}>
           <div>
             <ThemeSwitch />
           </div>
+        </Box>
+        <Box sx={{ display: ["block", "none", "none"] }}>
+          <MenuBurger links={menuLinks} />
         </Box>
       </Flex>
     </header>
@@ -42,8 +46,8 @@ Header.defaultProps = {
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  menuLinks: PropTypes.arrayOf(PropTypes.object),
+  title: string.isRequired,
+  menuLinks: arrayOf(object),
 }
 
 export default Header

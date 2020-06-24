@@ -1,11 +1,16 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import PropTypes from "prop-types"
+import { arrayOf, object } from "prop-types"
 import { Link } from "gatsby"
 
 const Menu = ({ links }) => (
   <nav>
-    <ul style={{ display: "flex", flex: 1 }}>
+    <ul
+      sx={{
+        display: "flex",
+        flex: "1",
+      }}
+    >
       {links.map(link => (
         <li
           key={link.name}
@@ -18,11 +23,17 @@ const Menu = ({ links }) => (
             activeClassName="active"
             sx={{
               color: "inherit",
-              fontWeight: "bold",
               textTransform: "uppercase",
               textDecoration: "none",
-              "&.active,&:hover": {
+              transition: "font-weight .4s ease-in-out",
+
+              "&.active": {
                 textDecoration: "underline",
+                fontWeight: "bold",
+              },
+
+              "&:hover": {
+                fontWeight: "bold",
               },
             }}
             to={link.path}
@@ -40,7 +51,7 @@ Menu.defaultProps = {
 }
 
 Menu.propTypes = {
-  links: PropTypes.arrayOf(PropTypes.object),
+  links: arrayOf(object),
 }
 
 export default Menu
