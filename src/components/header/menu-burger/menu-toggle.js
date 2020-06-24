@@ -21,8 +21,11 @@ const MenuToggle = ({ toggle }) => (
       userSelect: "none",
       cursor: "pointer",
       position: "relative",
+      top: 2,
+      right: 2,
+      bottom: 0,
       width: "50px",
-      height: "50px",
+      height: "55px",
       borderRadius: "50%",
       backgroundColor: "transparent",
     }}
