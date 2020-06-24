@@ -32,7 +32,7 @@ const ThemeSwitch = () => {
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === "dark"
 
-  const toggleColorMode = e => {
+  const toggleColorMode = () => {
     const nextColorMode = isDark ? "light" : "dark"
     setColorMode(nextColorMode)
   }
