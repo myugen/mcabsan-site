@@ -40,12 +40,21 @@ const MenuBackground = styled(motion.div)(
   })
 )
 
+const Burger = styled(motion.nav)(
+  css({
+    position: "fixed",
+    top: 0,
+    right: 0,
+    bottom: 0,
+  })
+)
+
 const MenuBurger = ({ links }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
   const containerRef = useRef(null)
   const { height } = useDimensions(containerRef)
   return (
-    <motion.nav
+    <Burger
       initial={false}
       animate={isOpen ? "open" : "closed"}
       custom={height}
@@ -54,7 +63,7 @@ const MenuBurger = ({ links }) => {
       <MenuBackground variants={sidebar} />
       <Navigation links={links} />
       <MenuToggle toggle={() => toggleOpen()} />
-    </motion.nav>
+    </Burger>
   )
 }
 
