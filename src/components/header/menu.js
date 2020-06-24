@@ -18,8 +18,11 @@ const StyledLink = styled(Link)(
     textTransform: "uppercase",
     textDecoration: "none",
     "&.active": {
-      textDecoration: "underline",
+      textDecoration: "line-through",
       fontWeight: "bold",
+      "&.active > h2:after, &.active > h2:before": {
+        content: '"\\00a0\\00a0"',
+      },
     },
   })
 )
