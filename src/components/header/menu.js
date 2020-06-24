@@ -1,7 +1,30 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, css } from "theme-ui"
 import { arrayOf, object } from "prop-types"
+import styled from "@emotion/styled"
+import { motion } from "framer-motion"
 import { Link } from "gatsby"
+
+const Item = styled(motion.li)(
+  css({
+    listStyleType: "none",
+    px: "1rem",
+  })
+)
+
+const StyledLink = styled(Link)(
+  css({
+    color: "inherit",
+    textTransform: "uppercase",
+    textDecoration: "none",
+    "&.active": {
+      textDecoration: "underline",
+      fontWeight: "bold",
+    },
+  })
+)
+
+const AnimatedLink = motion.custom(StyledLink)
 
 const Menu = ({ links }) => (
   <nav>
@@ -12,35 +35,26 @@ const Menu = ({ links }) => (
       }}
     >
       {links.map(link => (
-        <li
+        <Item
           key={link.name}
-          sx={{
-            listStyleType: "none",
-            px: "1rem",
-          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <Link
+          <AnimatedLink
             activeClassName="active"
-            sx={{
-              color: "inherit",
-              textTransform: "uppercase",
-              textDecoration: "none",
-              transition: "font-weight .4s ease-in-out",
-
-              "&.active": {
-                textDecoration: "underline",
-                fontWeight: "bold",
-              },
-
-              "&:hover": {
-                fontWeight: "bold",
-              },
-            }}
+            whileHover={{ fontWeight: "bold" }}
+            whileTap={{ fontWeight: "bold" }}
             to={link.path}
           >
-            {link.name}
-          </Link>
-        </li>
+            <h2
+              sx={{
+                fontWeight: "inherit",
+              }}
+            >
+              {link.name}
+            </h2>
+          </AnimatedLink>
+        </Item>
       ))}
     </ul>
   </nav>
