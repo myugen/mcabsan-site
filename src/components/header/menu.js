@@ -34,6 +34,7 @@ const Menu = ({ links }) => (
     <ul
       sx={{
         display: "flex",
+        my: 0,
         flex: "1",
       }}
     >
