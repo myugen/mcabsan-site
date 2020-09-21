@@ -5,7 +5,7 @@ import Layout from "components/layout"
 
 const Posts = () => {
   return (
-    <Layout>
+    <Layout metadata={{ title: "Posts" }}>
       <div>
         <h3>No posts yet. Stay tuned!!!</h3>
       </div>

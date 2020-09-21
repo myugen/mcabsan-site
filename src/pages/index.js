@@ -6,7 +6,7 @@ import Layout from "components/layout"
 
 const Home = () => {
   return (
-    <Layout>
+    <Layout metadata={{ title: "Home" }}>
       <div sx={{ textAlign: "center" }}>
         <Avatar src={me} width="256px" height="256px" />
         <h3>Hi! My name is Miguel Cabrera</h3>
