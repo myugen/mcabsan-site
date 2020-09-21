@@ -6,14 +6,19 @@ const theme = merge(toTheme(funston), {
   initialColorModeName: "dark",
   colors: {
     text: "#fff",
-    background: "#000",
+    background: "#0f0f0f",
     primary: "#639",
     secondary: "#ff6347",
     modes: {
       light: {
-        text: "#000",
+        text: "#0f0f0f",
         background: "#fff",
       },
+    },
+  },
+  links: {
+    social: {
+      color: "text",
     },
   },
 })

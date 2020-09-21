@@ -8,7 +8,7 @@ import { Link } from "gatsby"
 const Item = styled(motion.li)(
   css({
     listStyleType: "none",
-    px: "1rem",
+    px: 1,
   })
 )
 
@@ -34,6 +34,8 @@ const Menu = ({ links }) => (
     <ul
       sx={{
         display: "flex",
+        my: 0,
+        px: 0,
         flex: "1",
       }}
     >

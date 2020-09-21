@@ -3,7 +3,6 @@ import { jsx, css } from "theme-ui"
 import styled from "@emotion/styled"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
-import ThemeSwitch from "../theme-switch"
 
 const variantsItems = {
   open: {
@@ -97,15 +96,5 @@ export const Navigation = ({ links }) => (
         </AnimatedLink>
       </Item>
     ))}
-    <Item
-      key="switch"
-      variants={variantsItem}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <div sx={{ my: 2, justifyContent: "flex-end", display: "flex" }}>
-        <ThemeSwitch />
-      </div>
-    </Item>
   </Items>
 )

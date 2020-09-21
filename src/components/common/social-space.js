@@ -1,30 +1,46 @@
 /** @jsx jsx */
-import { jsx, Box, Flex, Link } from "theme-ui"
+import { jsx, Box, Flex, Link, css } from "theme-ui"
 import PropTypes from "prop-types"
+import { motion } from "framer-motion"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faTwitter,
   faGithub,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons"
+import styled from "@emotion/styled"
+
+const StyledDiv = styled(motion.div)(
+  css({
+    display: "inline-block",
+  })
+)
+
+const SocialLink = ({ children, href }) => (
+  <StyledDiv whileHover={{ scale: "1.1" }} whileTap={{ scale: 0.95 }}>
+    <Link variant="social" href={href}>
+      {children}
+    </Link>
+  </StyledDiv>
+)
 
 const SocialSpace = ({ twitter, github, linkedin }) => {
   return (
     <Flex sx={{ justifyContent: "center" }}>
       <Box px={1}>
-        <Link href={twitter.url}>
+        <SocialLink href={twitter.url}>
           <FontAwesomeIcon icon={faTwitter} />
-        </Link>
+        </SocialLink>
       </Box>
       <Box px={1}>
-        <Link href={github.url}>
+        <SocialLink href={github.url}>
           <FontAwesomeIcon icon={faGithub} />
-        </Link>
+        </SocialLink>
       </Box>
       <Box px={1}>
-        <Link href={linkedin.url}>
+        <SocialLink href={linkedin.url}>
           <FontAwesomeIcon icon={faLinkedinIn} />
-        </Link>
+        </SocialLink>
       </Box>
     </Flex>
   )

@@ -34,7 +34,7 @@ module.exports = {
     },
   ],
   siteMetadata: {
-    title: "Miguel<>Cabrera",
+    title: "<MiguelCabrera />",
     menuLinks: [
       {
         name: "Posts",

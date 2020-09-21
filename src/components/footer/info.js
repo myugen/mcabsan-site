@@ -5,9 +5,7 @@ import PropTypes from "prop-types"
 const Info = ({ location }) => {
   return (
     <div>
-      © {new Date().getFullYear()}, Built with 🍌 in <u>{location}</u> using
-      {` `}
-      <Link href="https://www.gatsbyjs.org">Gatsby</Link>
+      © {new Date().getFullYear()}, Built with 🍻 in {location}
     </div>
   )
 }
