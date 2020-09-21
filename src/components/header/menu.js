@@ -8,7 +8,7 @@ import { Link } from "gatsby"
 const Item = styled(motion.li)(
   css({
     listStyleType: "none",
-    px: "1rem",
+    px: 1,
   })
 )
 

@@ -16,6 +16,11 @@ const theme = merge(toTheme(funston), {
       },
     },
   },
+  links: {
+    social: {
+      color: "text",
+    },
+  },
 })
 
 export default theme

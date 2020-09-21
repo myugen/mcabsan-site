@@ -28,7 +28,11 @@ const Header = ({ title, menuLinks }) => {
         }}
       >
         <Box sx={{ display: "inline-block" }}>
-          <StyledDiv whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <StyledDiv
+            sx={{ paddingLeft: 1 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
             <Link
               sx={{
                 color: "inherit",
@@ -42,15 +46,15 @@ const Header = ({ title, menuLinks }) => {
         </Box>
         <Box sx={{ display: "inline-block" }}>
           <StyledDiv
-            sx={{ paddingRight: [0, 0, "1rem"] }}
+            sx={{ paddingRight: [0, "1rem"] }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             <ThemeSwitch />
           </StyledDiv>
-          <div sx={{ display: ["none", "inline-block", "inline-block"] }}>
+          <nav sx={{ display: ["none", "inline-block", "inline-block"] }}>
             <Menu links={menuLinks} />
-          </div>
+          </nav>
         </Box>
         <Box sx={{ display: ["inline-block", "none", "none"] }}>
           <MenuBurger links={menuLinks} />
