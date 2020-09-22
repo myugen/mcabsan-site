@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Link } from "theme-ui"
+import { jsx } from "theme-ui"
 import PropTypes from "prop-types"
 
 const Info = ({ location }) => {
