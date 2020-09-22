@@ -3,6 +3,7 @@ import { jsx, css } from "theme-ui"
 import styled from "@emotion/styled"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
+import ThemeSwitch from "./theme-switch"
 
 const variantsItems = {
   open: {
@@ -71,30 +72,40 @@ const StyledLink = styled(Link)(
 
 const AnimatedLink = motion.custom(StyledLink)
 
-export const Navigation = ({ links }) => (
-  <Items variants={variantsItems}>
-    {links.map(link => (
+export const Navigation = ({ links }) => {
+  return (
+    <Items variants={variantsItems}>
+      {links.map(link => (
+        <Item
+          key={link.name}
+          variants={variantsItem}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <AnimatedLink
+            activeClassName="active"
+            whileHover={{ fontWeight: "bold" }}
+            whileTap={{ fontWeight: "bold" }}
+            to={link.path}
+          >
+            <h2
+              sx={{
+                marginBottom: 0,
+                fontWeight: "inherit",
+              }}
+            >
+              {link.name}
+            </h2>
+          </AnimatedLink>
+        </Item>
+      ))}
       <Item
-        key={link.name}
         variants={variantsItem}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
-        <AnimatedLink
-          activeClassName="active"
-          whileHover={{ fontWeight: "bold" }}
-          whileTap={{ fontWeight: "bold" }}
-          to={link.path}
-        >
-          <h2
-            sx={{
-              fontWeight: "inherit",
-            }}
-          >
-            {link.name}
-          </h2>
-        </AnimatedLink>
+        <ThemeSwitch />
       </Item>
-    ))}
-  </Items>
-)
+    </Items>
+  )
+}

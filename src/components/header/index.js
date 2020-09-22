@@ -44,7 +44,7 @@ const Header = ({ title, menuLinks }) => {
             </Link>
           </StyledDiv>
         </Box>
-        <Box sx={{ display: "inline-block" }}>
+        <Box sx={{ display: ["none", "inline-block", "inline-block"] }}>
           <StyledDiv
             sx={{ paddingRight: [0, "1rem"] }}
             whileHover={{ scale: 1.1 }}
@@ -52,7 +52,7 @@ const Header = ({ title, menuLinks }) => {
           >
             <ThemeSwitch />
           </StyledDiv>
-          <nav sx={{ display: ["none", "inline-block", "inline-block"] }}>
+          <nav>
             <Menu links={menuLinks} />
           </nav>
         </Box>
