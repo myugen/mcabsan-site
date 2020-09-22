@@ -52,7 +52,7 @@ const Header = ({ title, menuLinks }) => {
           >
             <ThemeSwitch />
           </StyledDiv>
-          <nav>
+          <nav sx={{ display: "inline-block" }}>
             <Menu links={menuLinks} />
           </nav>
         </Box>
