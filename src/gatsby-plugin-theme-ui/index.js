@@ -7,18 +7,36 @@ const theme = merge(toTheme(funston), {
   colors: {
     text: "#fff",
     background: "#0f0f0f",
-    primary: "#639",
-    secondary: "#ff6347",
+    primary: "#0f0f0f",
+    secondary: "#fff",
     modes: {
       light: {
         text: "#0f0f0f",
         background: "#fff",
+        primary: "#fff",
+        secondary: "#0f0f0f",
       },
     },
   },
   links: {
     social: {
       color: "text",
+    },
+  },
+  text: {
+    title: {
+      fontFamily: "Patua One",
+    },
+  },
+  cards: {
+    primary: {
+      backgroundColor: "secondary",
+      padding: 1,
+      borderRadius: 2,
+      border: "1px solid",
+      color: "primary",
+      borderColor: "muted",
+      maxWidth: "300px",
     },
   },
 })
