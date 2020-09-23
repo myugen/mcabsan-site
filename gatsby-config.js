@@ -4,11 +4,16 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
+const isDev = process.env.NODE_ENV === "development"
+const isProd = process.env.NODE_ENV === "production"
+
 // Initialize dotenv
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`, // or '.env'
-  debug: process.env.NODE_ENV === "development",
-})
+if (!isProd) {
+  require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`, // or '.env'
+    debug: isDev,
+  })
+}
 
 module.exports = {
   /* Your site config here */
