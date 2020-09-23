@@ -3,21 +3,16 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-
 const isDev = process.env.NODE_ENV === "development"
 const isProd = process.env.NODE_ENV === "production"
 
-console.log("Node ENV", process.env.NODE_ENV)
-
-// Initialize dotenv
+// Production has setted env on system
 if (!isProd) {
   require("dotenv").config({
     path: `.env.${process.env.NODE_ENV}`, // or '.env'
     debug: isDev,
   })
 }
-
-console.log("GATSBY_DATO_API_KEY", process.env.GATSBY_DATO_API_KEY)
 
 module.exports = {
   /* Your site config here */
