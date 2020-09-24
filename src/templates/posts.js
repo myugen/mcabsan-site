@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { css, jsx, Text, Card, Image } from "theme-ui"
+import PropTypes from "prop-types"
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 import readingTime from "reading-time"
 
 import Layout from "components/layout"
-import usePostsData from "hooks/use-posts-data"
 
 const StyledLink = styled(Link)(
   css({
@@ -14,8 +14,8 @@ const StyledLink = styled(Link)(
   })
 )
 
-const Posts = () => {
-  const posts = usePostsData() || []
+const Posts = ({ data }) => {
+  const posts = data.allDatoCmsPost.edges || []
   const NoPosts = () => (
     <div>
       <h3>No posts yet. Stay tuned!!!</h3>
@@ -54,6 +54,33 @@ const Posts = () => {
       )}
     </Layout>
   )
+}
+
+export const query = graphql`
+  query {
+    allDatoCmsPost(
+      filter: { stage: { eq: "publish" } }
+      sort: { fields: [datetime], order: DESC }
+    ) {
+      edges {
+        node {
+          code
+          title
+          datetime(formatString: "MMMM DD, YYYY")
+          description
+          image {
+            url
+            alt
+          }
+          body
+        }
+      }
+    }
+  }
+`
+
+Posts.propTypes = {
+  data: PropTypes.object.isRequired,
 }
 
 export default Posts

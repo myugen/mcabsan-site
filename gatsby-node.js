@@ -2,6 +2,14 @@ const path = require(`path`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
+
+  // Posts
+  createPage({
+    path: "/posts",
+    component: path.resolve(`./src/templates/posts.js`),
+  })
+
+  // Post
   const result = await graphql(`
     query PostsQuery {
       allDatoCmsPost(
