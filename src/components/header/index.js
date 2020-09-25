@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex, Box, css } from "theme-ui"
+import React from "react"
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
 import { string, object, arrayOf } from "prop-types"
@@ -15,9 +16,9 @@ const StyledDiv = styled(motion.div)(
   })
 )
 
-const Header = ({ title, menuLinks }) => {
+const Header = ({ title, menuLinks }, ref) => {
   return (
-    <header>
+    <header ref={ref}>
       <Flex
         px={2}
         py={[2, 0, 0]}
@@ -73,4 +74,4 @@ Header.propTypes = {
   menuLinks: arrayOf(object),
 }
 
-export default Header
+export default React.forwardRef(Header)
