@@ -8,12 +8,11 @@ import { useSiteMetadata } from "hooks"
 import Header from "../header"
 import Footer from "../footer"
 import SiteMetadata from "./site-metadata"
-import ScrollTo from "../common/scroll-to"
+import ScrollToTop from "../common/scroll-to"
 
 const Layout = ({ children, metadata }) => {
   const siteMetadata = useSiteMetadata()
   const { pathname } = useLocation()
-  const refToTop = useRef(null)
   const seo = { ...siteMetadata, ...metadata, pathname }
 
   const { title, menuLinks, location, social } = siteMetadata
@@ -21,12 +20,12 @@ const Layout = ({ children, metadata }) => {
   return (
     <Container sx={{ maxWidth: "1200px" }}>
       <SiteMetadata {...seo} />
-      <Header ref={refToTop} title={title} menuLinks={menuLinks} />
+      <Header title={title} menuLinks={menuLinks} />
       <main>
         <Container p={3}>{children}</Container>
       </main>
       <Footer location={location} social={social} />
-      <ScrollTo to={refToTop} />
+      <ScrollToTop />
     </Container>
   )
 }
