@@ -11,8 +11,11 @@ const About = () => {
         <h3>This is About info!</h3>
       </div>
       <ContactForm
-        onSubmit={values => {
-          console.log(values)
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            console.log(values)
+            setSubmitting(false)
+          }, 10000)
         }}
       />
     </Layout>

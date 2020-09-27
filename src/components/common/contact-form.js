@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Input, Textarea, Button, Card } from "theme-ui"
+import { jsx, Input, Textarea, Button, Card, Spinner } from "theme-ui"
 import PropTypes from "prop-types"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as yup from "yup"
@@ -24,6 +24,66 @@ const StyledTextarea = ({ field, form, ...props }) => {
   return <Textarea {...field} {...props} rows="6" my={2} />
 }
 
+const CustomForm = ({ isSubmitting }) => (
+  <Form>
+    <Field
+      name="name"
+      type="text"
+      placeholder="John Doe"
+      component={StyledInput}
+    />
+    <ErrorMessage name="name" />
+    <Field
+      name="email"
+      type="email"
+      placeholder="john@doe.com"
+      component={StyledInput}
+    />
+    <ErrorMessage name="email" />
+    <Field
+      name="message"
+      placeholder="Whatever you want ✍️"
+      component={StyledTextarea}
+    />
+    <ErrorMessage name="message" />
+    <div sx={{ my: 2 }}>
+      <Button
+        sx={{
+          cursor: "pointer",
+          color: "text",
+          border: "1px solid",
+          "&:hover:enabled": {
+            backgroundColor: "text",
+            color: "background",
+            borderColor: "background",
+          },
+          "&:disabled": {
+            cursor: "not-allowed",
+          },
+        }}
+        disabled={isSubmitting}
+        type="submit"
+      >
+        {isSubmitting ? (
+          <Spinner
+            sx={{
+              color: "text",
+              width: "3em",
+              height: "1em",
+              verticalAlign: "middle",
+            }}
+          />
+        ) : (
+          <div>
+            <FontAwesomeIcon icon={faPaperPlane} />
+            <span sx={{ paddingLeft: 1 }}>Send</span>
+          </div>
+        )}
+      </Button>
+    </div>
+  </Form>
+)
+
 const ContactForm = ({ onSubmit = () => {} }) => (
   <div>
     <Card sx={{ minWidth: "100%", px: 2 }}>
@@ -37,40 +97,7 @@ const ContactForm = ({ onSubmit = () => {} }) => (
         validationSchema={ContactSchema}
         onSubmit={onSubmit}
       >
-        <Form>
-          <Field name="name" placeholder="John Doe" component={StyledInput} />
-          <ErrorMessage name="name" />
-          <Field
-            name="email"
-            placeholder="john@doe.com"
-            component={StyledInput}
-          />
-          <ErrorMessage name="email" />
-          <Field
-            name="message"
-            placeholder="Whatever you want ✍️"
-            component={StyledTextarea}
-          />
-          <ErrorMessage name="message" />
-          <div sx={{ my: 2 }}>
-            <Button
-              sx={{
-                cursor: "pointer",
-                color: "text",
-                border: "1px solid",
-                "&:hover": {
-                  backgroundColor: "text",
-                  color: "background",
-                  borderColor: "background",
-                },
-              }}
-              type="submit"
-            >
-              <FontAwesomeIcon icon={faPaperPlane} />
-              <span sx={{ paddingLeft: 1 }}>Send</span>
-            </Button>
-          </div>
-        </Form>
+        {({ isSubmitting }) => <CustomForm isSubmitting={isSubmitting} />}
       </Formik>
     </Card>
   </div>
