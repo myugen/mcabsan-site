@@ -8,7 +8,7 @@ import { useSiteMetadata } from "hooks"
 import Header from "../header"
 import Footer from "../footer"
 import SiteMetadata from "./site-metadata"
-import ScrollToTop from "../common/scroll-to"
+import { ScrollToTop } from "../common"
 
 const Layout = ({ children, metadata }) => {
   const siteMetadata = useSiteMetadata()
