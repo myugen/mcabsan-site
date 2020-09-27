@@ -22,7 +22,8 @@
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@theme-ui/typography": "^0.3.0",
     "dotenv": "^8.2.0",
-    "framer-motion": "^1.11.1",
+    "formik": "^2.1.5",
+    "framer-motion": "^2.7.5",
     "gatsby": "^2.23.3",
     "gatsby-alias-imports": "^1.0.4",
     "gatsby-plugin-config": "^1.0.7",
@@ -39,7 +40,8 @@
     "react-switch": "^5.0.1",
     "reading-time": "^1.2.0",
     "theme-ui": "^0.3.1",
-    "typography-theme-funston": "^0.16.19"
+    "typography-theme-funston": "^0.16.19",
+    "yup": "^0.29.3"
   },
   "devDependencies": {
     "prettier": "2.0.5"

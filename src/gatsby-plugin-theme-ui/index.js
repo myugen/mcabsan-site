@@ -31,8 +31,8 @@ const theme = merge(toTheme(funston), {
   cards: {
     primary: {
       backgroundColor: "secondary",
+      borderRadius: 6,
       padding: 1,
-      borderRadius: 2,
       border: "1px solid",
       color: "primary",
       borderColor: "muted",
