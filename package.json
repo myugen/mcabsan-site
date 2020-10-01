@@ -5,10 +5,10 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
+    "dev": "gatsby develop --port $PORT",
     "build": "gatsby build",
-    "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "vercel dev",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
@@ -21,6 +21,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "@theme-ui/typography": "^0.3.0",
+    "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "formik": "^2.1.5",
     "framer-motion": "^2.7.5",

@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api/mail.*",
+      "dest": "api/mail/index.go"
+    }
+  ],
+  "env": {
+    "SENDGRID_API_KEY": "@sendgrid-api-key-production-v9bh",
+    "DATO_API_KEY": "@dato-api-key-production-dkhc"
+  },
+  "build": {
+    "env": {
+      "GO_BUILD_FLAGS": "-ldflags '-s -w'"
+    }
+  }
+}
