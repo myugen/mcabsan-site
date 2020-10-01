@@ -4,15 +4,11 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 const isDev = process.env.NODE_ENV === "development"
-const isProd = process.env.NODE_ENV === "production"
 
-// Production has setted env on system
-if (!isProd) {
-  require("dotenv").config({
-    path: `.env.${process.env.NODE_ENV}`, // or '.env'
-    debug: isDev,
-  })
-}
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`, // or '.env'
+  debug: isDev,
+})
 
 module.exports = {
   /* Your site config here */
@@ -38,7 +34,7 @@ module.exports = {
       options: {
         // You can find your read-only API token under the Settings > API tokens
         // section of your administrative area:
-        apiToken: process.env.GATSBY_DATO_API_KEY,
+        apiToken: process.env.DATO_API_KEY,
 
         // The project environment to read from. Defaults to the primary environment:
         environment: "main",
@@ -67,6 +63,7 @@ module.exports = {
         components: "src/components",
         hooks: "src/hooks",
         assets: "src/assets",
+        services: "src/services",
       },
     },
   ],

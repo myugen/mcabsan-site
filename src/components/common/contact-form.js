@@ -12,7 +12,7 @@ const ContactSchema = yup.object().shape({
     .min(2, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  email: yup.string().email("Invalid email").required("Required"),
+  from: yup.string().email("Invalid email").required("Required"),
   message: yup.string().min(50, "Too Short!").required("Required"),
 })
 
@@ -34,12 +34,12 @@ const CustomForm = ({ isSubmitting }) => (
     />
     <ErrorMessage name="name" />
     <Field
-      name="email"
+      name="from"
       type="email"
       placeholder="john@doe.com"
       component={StyledInput}
     />
-    <ErrorMessage name="email" />
+    <ErrorMessage name="from" />
     <Field
       name="message"
       placeholder="Whatever you want ✍️"
@@ -91,7 +91,7 @@ const ContactForm = ({ onSubmit = () => {} }) => (
       <Formik
         initialValues={{
           name: "",
-          email: "",
+          from: "",
           message: "",
         }}
         validationSchema={ContactSchema}
