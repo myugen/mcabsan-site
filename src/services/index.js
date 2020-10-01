@@ -1,3 +1,3 @@
-import email from "./email"
+import api from "./api"
 
-export { email }
+export { api }

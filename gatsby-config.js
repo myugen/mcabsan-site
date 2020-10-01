@@ -3,11 +3,9 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-const isDev = process.env.NODE_ENV === "development"
-
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`, // or '.env'
-  debug: isDev,
+  debug: false,
 })
 
 module.exports = {
@@ -64,6 +62,7 @@ module.exports = {
         hooks: "src/hooks",
         assets: "src/assets",
         services: "src/services",
+        utils: "src/utils",
       },
     },
   ],
@@ -107,6 +106,8 @@ module.exports = {
       "JS",
       "TypeScript",
       "TS",
+      "Golang",
+      "GO",
     ],
   },
 }
