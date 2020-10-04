@@ -60,7 +60,7 @@ func recaptchaMiddleware(secret string) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			token := c.Request().Header.Get("X-RECAPTCHA-TOKEN")
-			log.WithField("token", token).Info("reCaptcha middleware")
+			log.WithField("token", token).Debug("reCaptcha middleware")
 			captcha, _ := recaptcha.NewReCAPTCHA(secret, recaptcha.V3, 10*time.Second)
 			if err := captcha.Verify(token); err != nil {
 				log.Error("Error on reCaptcha verification", err)
@@ -78,6 +78,7 @@ func ping(c echo.Context) error {
 func send(c echo.Context) error {
 	form := new(SendEmailRequest)
 	if err := c.Bind(form); err != nil {
+		log.Error("Error sending mail on body binding", err)
 		return echo.NewHTTPError(http.StatusBadRequest, "bad request form", err)
 	}
 
@@ -91,6 +92,7 @@ func send(c echo.Context) error {
 	client := sendgrid.NewSendClient(os.Getenv("SENDGRID_API_KEY"))
 	response, err := client.Send(message)
 	if err != nil {
+		log.Error("Error sending mail", err)
 		return echo.NewHTTPError(http.StatusBadRequest, "error sending mail", err)
 	}
 
