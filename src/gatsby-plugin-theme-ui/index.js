@@ -1,5 +1,7 @@
 import { toTheme } from "@theme-ui/typography"
 import funston from "typography-theme-funston"
+import nightOwl from "@theme-ui/prism/presets/night-owl.json"
+import github from "@theme-ui/prism/presets/github.json"
 import merge from "deepmerge"
 
 const theme = merge(toTheme(funston), {
@@ -16,6 +18,25 @@ const theme = merge(toTheme(funston), {
         primary: "#fff",
         secondary: "#0f0f0f",
       },
+      text: {
+        info: {
+          color: "#4986FF",
+        },
+        success: {
+          color: "#31E08B",
+        },
+        warning: {
+          color: "#FFE62D",
+        },
+        danger: {
+          color: "#FF6668",
+        },
+      },
+      styles: {
+        code: {
+          ...github,
+        },
+      },
     },
   },
   links: {
@@ -27,6 +48,26 @@ const theme = merge(toTheme(funston), {
     title: {
       fontFamily: "Patua One",
     },
+    info: {
+      color: "#3670F7",
+    },
+    success: {
+      color: "#35BA50",
+    },
+    warning: {
+      color: "#DD9F02",
+    },
+    danger: {
+      color: "#FC4484",
+    },
+  },
+  forms: {
+    input: {
+      fontFamily: "Cabin Condensed",
+    },
+    textarea: {
+      fontFamily: "Cabin Condensed",
+    },
   },
   cards: {
     primary: {
@@ -37,6 +78,11 @@ const theme = merge(toTheme(funston), {
       color: "primary",
       borderColor: "muted",
       maxWidth: "300px",
+    },
+  },
+  styles: {
+    code: {
+      ...nightOwl,
     },
   },
 })

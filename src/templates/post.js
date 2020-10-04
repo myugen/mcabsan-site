@@ -3,15 +3,15 @@ import { jsx, Image, Text } from "theme-ui"
 import { graphql } from "gatsby"
 import PropTypes from "prop-types"
 import readingTime from "reading-time"
-import marked from "marked"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "components/layout"
 
 const Post = ({ data }) => {
   const post = data.datoCmsPost
-  const { title, image, datetime, body, seo } = post
+  const { title, image, datetime, bodyNode, seo } = post
+  const { body } = bodyNode.childMdx
   const readingTimeText = readingTime(body).text
-  const content = marked(body)
   return (
     <Layout metadata={{ title: `Post - ${seo.title}` }}>
       <article>
@@ -24,7 +24,7 @@ const Post = ({ data }) => {
           </small>
           <Image src={image.url} alt={image.alt} />
         </header>
-        <div dangerouslySetInnerHTML={{ __html: content }}></div>
+        <MDXRenderer>{body}</MDXRenderer>
       </article>
     </Layout>
   )
@@ -41,7 +41,12 @@ export const query = graphql`
         url
         alt
       }
-      body
+      bodyNode {
+        id
+        childMdx {
+          body
+        }
+      }
       seo {
         title
         description

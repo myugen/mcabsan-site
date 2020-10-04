@@ -65,6 +65,12 @@ module.exports = {
         utils: "src/utils",
       },
     },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+      },
+    },
   ],
   siteMetadata: {
     title: "<MiguelCabrera />",

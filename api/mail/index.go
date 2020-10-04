@@ -3,12 +3,14 @@ package mail
 import (
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	"gopkg.in/ezzarghili/recaptcha-go.v4"
 )
 
 type contactEmail struct {
@@ -44,10 +46,23 @@ func Mail(w http.ResponseWriter, r *http.Request) {
 	// Routes
 	parent := e.Group("/api/mail")
 	parent.GET("", ping)
-	parent.POST("/send", send)
+	parent.POST("/send", send, recaptchaMiddleware(os.Getenv("RECAPTCHA_SECRET_KEY")))
 
 	// Start server
 	e.ServeHTTP(w, r)
+}
+
+func recaptchaMiddleware(secret string) echo.MiddlewareFunc {
+	return func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			token := c.Request().Header.Get("X-RECAPTCHA-TOKEN")
+			captcha, _ := recaptcha.NewReCAPTCHA(secret, recaptcha.V3, 10*time.Second)
+			if err := captcha.Verify(token); err != nil {
+				return echo.NewHTTPError(http.StatusBadRequest, "recaptcha failed!", err)
+			}
+			return next(c)
+		}
+	}
 }
 
 func ping(c echo.Context) error {

@@ -1,10 +1,11 @@
 /** @jsx jsx */
-import { jsx, Input, Textarea, Button, Card, Spinner } from "theme-ui"
+import { jsx, Input, Textarea, Button, Card, Spinner, Text } from "theme-ui"
 import PropTypes from "prop-types"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as yup from "yup"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons"
+import RecaptchaBanner from "./recaptcha-banner"
 
 const ContactSchema = yup.object().shape({
   name: yup
@@ -24,6 +25,17 @@ const StyledTextarea = ({ field, form, ...props }) => {
   return <Textarea {...field} {...props} rows="6" my={2} />
 }
 
+const StyledErrorMessage = ({ name, sx, ...rest }) => (
+  <ErrorMessage
+    name={name}
+    render={msg => (
+      <Text variant="danger" {...rest}>
+        {msg}
+      </Text>
+    )}
+  />
+)
+
 const CustomForm = ({ isSubmitting }) => (
   <Form>
     <Field
@@ -32,21 +44,21 @@ const CustomForm = ({ isSubmitting }) => (
       placeholder="John Doe"
       component={StyledInput}
     />
-    <ErrorMessage name="name" />
+    <StyledErrorMessage name="name" />
     <Field
       name="from"
       type="email"
       placeholder="john@doe.com"
       component={StyledInput}
     />
-    <ErrorMessage name="from" />
+    <StyledErrorMessage name="from" />
     <Field
       name="message"
       placeholder="Whatever you want ✍️"
       component={StyledTextarea}
     />
-    <ErrorMessage name="message" />
-    <div sx={{ my: 2 }}>
+    <StyledErrorMessage name="message" />
+    <div sx={{ my: 2, display: "flex" }}>
       <Button
         sx={{
           cursor: "pointer",
@@ -80,6 +92,7 @@ const CustomForm = ({ isSubmitting }) => (
           </div>
         )}
       </Button>
+      <RecaptchaBanner sx={{ marginLeft: 2 }} />
     </div>
   </Form>
 )
