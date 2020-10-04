@@ -58,12 +58,13 @@ const CustomForm = ({ isSubmitting }) => (
       component={StyledTextarea}
     />
     <StyledErrorMessage name="message" />
-    <div sx={{ my: 2, display: "flex" }}>
+    <div sx={{ my: 2, display: "flex", flexDirection: ["column", "row"] }}>
       <Button
         sx={{
           cursor: "pointer",
           color: "text",
           border: "1px solid",
+
           "&:hover:enabled": {
             backgroundColor: "text",
             color: "background",
@@ -92,7 +93,7 @@ const CustomForm = ({ isSubmitting }) => (
           </div>
         )}
       </Button>
-      <RecaptchaBanner sx={{ marginLeft: 2 }} />
+      <RecaptchaBanner sx={{ marginLeft: [0, 2], marginTop: [2, 0] }} />
     </div>
   </Form>
 )

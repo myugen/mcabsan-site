@@ -18,7 +18,8 @@ const About = () => {
       <ContactForm
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            const result = executeRecaptcha("homepage")
+            const result = await executeRecaptcha("homepage")
+            console.log(result)
             setToken(result)
             const { name, from, message } = values
             const payload = {
