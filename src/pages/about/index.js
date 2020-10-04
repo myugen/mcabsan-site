@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { useState } from "react"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 import Layout from "components/layout"
@@ -9,7 +8,6 @@ import { api } from "services"
 
 const About = () => {
   const { executeRecaptcha } = useGoogleReCaptcha()
-  const [token, setToken] = useState("")
   return (
     <Layout metadata={{ title: "About" }}>
       <div>
@@ -18,9 +16,7 @@ const About = () => {
       <ContactForm
         onSubmit={async (values, { setSubmitting }) => {
           try {
-            const result = await executeRecaptcha("homepage")
-            console.log(result)
-            setToken(result)
+            const token = await executeRecaptcha("homepage")
             const { name, from, message } = values
             const payload = {
               to: {
