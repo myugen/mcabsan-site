@@ -10,6 +10,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/ezzarghili/recaptcha-go.v4"
 )
 
@@ -37,6 +38,8 @@ type SendEmailResponse struct {
 }
 
 func Mail(w http.ResponseWriter, r *http.Request) {
+	log.SetOutput(os.Stdout)
+	log.SetLevel(log.InfoLevel)
 	e := echo.New()
 
 	// Middleware
@@ -50,14 +53,17 @@ func Mail(w http.ResponseWriter, r *http.Request) {
 
 	// Start server
 	e.ServeHTTP(w, r)
+	log.Info("Mail api initialized!")
 }
 
 func recaptchaMiddleware(secret string) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			token := c.Request().Header.Get("X-RECAPTCHA-TOKEN")
+			log.WithField("token", token).Info("reCaptcha middleware")
 			captcha, _ := recaptcha.NewReCAPTCHA(secret, recaptcha.V3, 10*time.Second)
 			if err := captcha.Verify(token); err != nil {
+				log.Error("Error on reCaptcha verification", err)
 				return echo.NewHTTPError(http.StatusBadRequest, "recaptcha failed!", err)
 			}
 			return next(c)
