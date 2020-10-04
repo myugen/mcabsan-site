@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Container } from "theme-ui"
-import { useRef } from "react"
+import { Global } from "@emotion/core"
 import PropTypes from "prop-types"
 import { useLocation } from "@reach/router"
 
@@ -19,6 +19,7 @@ const Layout = ({ children, metadata }) => {
 
   return (
     <Container sx={{ maxWidth: "1200px" }}>
+      <Global styles={{ ".grecaptcha-badge": { visibility: "hidden" } }} />
       <SiteMetadata {...seo} />
       <Header title={title} menuLinks={menuLinks} />
       <main>
