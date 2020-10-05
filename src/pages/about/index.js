@@ -10,9 +10,7 @@ const About = () => {
   const { executeRecaptcha } = useGoogleReCaptcha()
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      console.log("Contact form -> submit")
       const token = await executeRecaptcha("homepage")
-      console.log("reCAPTCHA executed", token)
       const { name, from, message } = values
       const payload = {
         to: {
