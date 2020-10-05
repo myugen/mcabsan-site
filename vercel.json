@@ -10,7 +10,7 @@
     "SENDGRID_API_KEY": "@sendgrid-api-key-production-v9bh",
     "DATO_API_KEY": "@dato-api-key-production-dkhc",
     "RECAPTCHA_SECRET_KEY": "@recaptcha-secret-key-production-pu1w",
-    "RECAPTCHA_SITE_KEY": "@recaptcha-site-key-production-19fi"
+    "GATSBY_RECAPTCHA_SITE_KEY": "@gatsby-recaptcha-site-key-production-f4no"
   },
   "build": {
     "env": {
