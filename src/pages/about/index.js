@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
+import { useToasts } from "react-toast-notifications"
 
 import Layout from "components/layout"
 import { ContactForm } from "components/common"
@@ -8,7 +9,8 @@ import { api } from "services"
 
 const About = () => {
   const { executeRecaptcha } = useGoogleReCaptcha()
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const { addToast } = useToasts()
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const token = await executeRecaptcha("homepage")
       const { name, from, message } = values
@@ -32,9 +34,14 @@ const About = () => {
       })
       console.log(response)
       setSubmitting(false)
+      addToast("Email sent successfully! 👌", { appearance: "success" })
+      resetForm()
     } catch (e) {
       console.error(e)
       setSubmitting(false)
+      addToast("Ooops! It seems something went wrong 😓", {
+        appearance: "danger",
+      })
     }
   }
   return (
@@ -42,6 +49,7 @@ const About = () => {
       <div>
         <h3>This is About info!</h3>
       </div>
+
       <ContactForm onSubmit={handleSubmit} />
     </Layout>
   )

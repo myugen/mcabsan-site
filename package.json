@@ -44,6 +44,7 @@
     "react-google-recaptcha-v3": "^1.6.1",
     "react-helmet": "^6.1.0",
     "react-switch": "^5.0.1",
+    "react-toast-notifications": "^2.4.0",
     "reading-time": "^1.2.0",
     "theme-ui": "^0.3.1",
     "typography-theme-funston": "^0.16.19",
