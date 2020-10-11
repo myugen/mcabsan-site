@@ -12,9 +12,9 @@ const ContactSchema = yup.object().shape({
     .string()
     .min(2, "Too Short!")
     .max(50, "Too Long!")
-    .required("Required"),
-  from: yup.string().email("Invalid email").required("Required"),
-  message: yup.string().min(50, "Too Short!").required("Required"),
+    .required("Required!"),
+  from: yup.string().email("Invalid email!").required("Required!"),
+  message: yup.string().min(50, "Too Short!").required("Required!"),
 })
 
 const StyledInput = ({ field, form, ...props }) => {
@@ -59,24 +59,7 @@ const CustomForm = ({ isSubmitting }) => (
     />
     <StyledErrorMessage name="message" />
     <div sx={{ my: 2, display: "flex", flexDirection: ["column", "row"] }}>
-      <Button
-        sx={{
-          cursor: "pointer",
-          color: "text",
-          border: "1px solid",
-
-          "&:hover:enabled": {
-            backgroundColor: "text",
-            color: "background",
-            borderColor: "background",
-          },
-          "&:disabled": {
-            cursor: "not-allowed",
-          },
-        }}
-        disabled={isSubmitting}
-        type="submit"
-      >
+      <Button variant="secondary" disabled={isSubmitting} type="submit">
         {isSubmitting ? (
           <Spinner
             sx={{
