@@ -3,7 +3,7 @@ import { jsx, css } from "theme-ui"
 import { arrayOf, object } from "prop-types"
 import styled from "@emotion/styled"
 import { motion } from "framer-motion"
-import { Link } from "gatsby"
+import { Link, useIntl } from "gatsby-plugin-intl"
 
 const Item = styled(motion.li)(
   css({
@@ -29,41 +29,44 @@ const StyledLink = styled(Link)(
 
 const AnimatedLink = motion.custom(StyledLink)
 
-const Menu = ({ links }) => (
-  <nav>
-    <ul
-      sx={{
-        display: "flex",
-        my: 0,
-        px: 0,
-        flex: "1",
-      }}
-    >
-      {links.map(link => (
-        <Item
-          key={link.name}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <AnimatedLink
-            activeClassName="active"
-            whileHover={{ fontWeight: "bold" }}
-            whileTap={{ fontWeight: "bold" }}
-            to={link.path}
+const Menu = ({ links }) => {
+  const intl = useIntl()
+  return (
+    <nav>
+      <ul
+        sx={{
+          display: "flex",
+          my: 0,
+          px: 0,
+          flex: "1",
+        }}
+      >
+        {links.map(({ key, path }) => (
+          <Item
+            key={key}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <h2
-              sx={{
-                fontWeight: "inherit",
-              }}
+            <AnimatedLink
+              activeClassName="active"
+              whileHover={{ fontWeight: "bold" }}
+              whileTap={{ fontWeight: "bold" }}
+              to={path}
             >
-              {link.name}
-            </h2>
-          </AnimatedLink>
-        </Item>
-      ))}
-    </ul>
-  </nav>
-)
+              <h2
+                sx={{
+                  fontWeight: "inherit",
+                }}
+              >
+                {intl.formatMessage({ id: `menu.${key}` })}
+              </h2>
+            </AnimatedLink>
+          </Item>
+        ))}
+      </ul>
+    </nav>
+  )
+}
 
 Menu.defaultProps = {
   links: [],

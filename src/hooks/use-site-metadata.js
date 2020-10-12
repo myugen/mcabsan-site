@@ -7,8 +7,12 @@ export default function useSiteMetadata() {
         siteMetadata {
           title
           menuLinks {
-            name
+            key
             path
+          }
+          languages {
+            key
+            name
           }
           description
           author

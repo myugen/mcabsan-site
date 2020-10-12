@@ -2,7 +2,7 @@
 import { css, jsx, Text, Card, Image } from "theme-ui"
 import PropTypes from "prop-types"
 import styled from "@emotion/styled"
-import { Link } from "gatsby"
+import { Link, useIntl } from "gatsby-plugin-intl"
 import readingTime from "reading-time"
 
 import Layout from "components/layout"
@@ -16,11 +16,15 @@ const StyledLink = styled(Link)(
 
 const Posts = ({ data }) => {
   const posts = data.allDatoCmsPost.edges || []
-  const NoPosts = () => (
-    <div>
-      <h3>No posts yet. Stay tuned!!!</h3>
-    </div>
-  )
+  const NoPosts = () => {
+    const { formatMessage } = useIntl()
+    return (
+      <div>
+        <h3>{formatMessage({ id: "page.posts.empty" })}</h3>
+      </div>
+    )
+  }
+
   return (
     <Layout metadata={{ title: "Posts" }}>
       {!posts.length && <NoPosts />}

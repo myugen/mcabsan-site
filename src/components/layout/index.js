@@ -15,7 +15,7 @@ const Layout = ({ children, metadata }) => {
   const { pathname } = useLocation()
   const seo = { ...siteMetadata, ...metadata, pathname }
 
-  const { title, menuLinks, location, social } = siteMetadata
+  const { title, menuLinks, location, social, languages } = siteMetadata
 
   return (
     <Container sx={{ maxWidth: "1200px" }}>
@@ -25,7 +25,7 @@ const Layout = ({ children, metadata }) => {
       <main>
         <Container p={3}>{children}</Container>
       </main>
-      <Footer location={location} social={social} />
+      <Footer location={location} social={social} languages={languages} />
       <ScrollToTop />
     </Container>
   )

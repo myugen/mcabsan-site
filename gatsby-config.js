@@ -28,6 +28,19 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-intl`,
+      options: {
+        // language JSON resource path
+        path: `${__dirname}/src/intl`,
+        // supported language
+        languages: ["en", "es"],
+        // language file path
+        defaultLanguage: "en",
+        // option to redirect to `/ko` when connecting `/`
+        redirect: true,
+      },
+    },
+    {
       resolve: `gatsby-source-datocms`,
       options: {
         // You can find your read-only API token under the Settings > API tokens
@@ -76,13 +89,17 @@ module.exports = {
     title: "<MiguelCabrera />",
     menuLinks: [
       {
-        name: "Posts",
+        key: "posts",
         path: "/posts",
       },
       {
-        name: "About",
+        key: "about",
         path: "/about",
       },
+    ],
+    languages: [
+      { key: "es", name: "Español" },
+      { key: "en", name: "English" },
     ],
     author: "Miguel Cabrera",
     location: "Canary Islands",

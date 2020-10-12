@@ -176,5 +176,5 @@ const theme = merge(toTheme(funston), {
     },
   },
 })
-console.log("theme", theme)
+
 export default theme
