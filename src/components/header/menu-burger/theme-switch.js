@@ -18,8 +18,7 @@ const ThemeSwitch = () => {
     const nextColorMode = isDark ? "light" : "dark"
     setColorMode(nextColorMode)
   }
-
-  const themeLabel = formatMessage({ id: `theme.${colorMode}` })
+  const themeLabel = formatMessage({ id: `theme.${isDark ? "light" : "dark"}` })
 
   return (
     <Link
