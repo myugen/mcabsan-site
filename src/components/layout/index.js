@@ -19,7 +19,20 @@ const Layout = ({ children, metadata }) => {
 
   return (
     <Container sx={{ maxWidth: "1200px" }}>
-      <Global styles={{ ".grecaptcha-badge": { visibility: "hidden" } }} />
+      <Global
+        styles={{
+          ".grecaptcha-badge": { visibility: "hidden" },
+          "@font-face": {
+            fontFamily: "JetBrains Mono",
+            src: `url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/web/JetBrainsMono-Regular.eot') format('embedded-opentype'),
+                  url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/web/JetBrainsMono-Regular.woff2') format('woff2'),
+                  url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/web/JetBrainsMono-Regular.woff') format('woff'),
+                  url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype')`,
+            fontWeight: "normal",
+            fontStyle: "normal",
+          },
+        }}
+      />
       <SiteMetadata {...seo} />
       <Header title={title} menuLinks={menuLinks} />
       <main>
