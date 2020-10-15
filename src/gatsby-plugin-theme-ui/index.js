@@ -28,6 +28,9 @@ const theme = merge(toTheme(funston), {
       },
     },
   },
+  fonts: {
+    monospace: "JetBrains Mono, monospace",
+  },
   links: {
     social: {
       color: "text",
@@ -172,7 +175,16 @@ const theme = merge(toTheme(funston), {
       ...nightOwl,
     },
     pre: {
+      overflow: "none",
       overflowX: "scroll",
+      fontFeatureSettings: `"liga" on, "calt" on`,
+      WebkitFontFeatureSettings: `"liga" on, "calt" on`,
+      MozFontFeatureSettings: `"liga" on, "calt" on`,
+      fontSmoothing: "antialiased",
+      WebkitFontSmoothing: "antialiased",
+      MozFontSmoothing: "antialiased",
+      textRendering: "optimizeLegibility",
+      fontFamily: "JetBrains Mono",
     },
   },
 })
