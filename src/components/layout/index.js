@@ -31,6 +31,9 @@ const Layout = ({ children, metadata }) => {
             fontWeight: "normal",
             fontStyle: "normal",
           },
+          body: {
+            textRendering: "optimizeLegibility",
+          },
         }}
       />
       <SiteMetadata {...seo} />
