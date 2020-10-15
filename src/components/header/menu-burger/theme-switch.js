@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, Link, useColorMode } from "theme-ui"
+import { useIntl } from "gatsby-plugin-intl"
 
 import moon from "assets/moon.png"
 import sun from "assets/sun.png"
@@ -9,6 +10,7 @@ const ThemeSwitch = () => {
     { pointerEvents: "none", margin: 4, verticalAlign: "middle" },
   ]
 
+  const { formatMessage } = useIntl()
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === "dark"
 
@@ -16,6 +18,8 @@ const ThemeSwitch = () => {
     const nextColorMode = isDark ? "light" : "dark"
     setColorMode(nextColorMode)
   }
+
+  const themeLabel = formatMessage({ id: `theme.${colorMode}` })
 
   return (
     <Link
@@ -37,7 +41,10 @@ const ThemeSwitch = () => {
           role="presentation"
           css={iconCss}
         />
-        Activate {isDark ? "Light" : "Dark"} Mode
+        {formatMessage(
+          { id: "menu.theme" },
+          { theme: themeLabel.toLowerCase() }
+        )}
       </div>
     </Link>
   )

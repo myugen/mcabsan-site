@@ -2,7 +2,7 @@
 import { jsx, css } from "theme-ui"
 import styled from "@emotion/styled"
 import { motion } from "framer-motion"
-import { Link } from "gatsby"
+import { Link, useIntl } from "gatsby-plugin-intl"
 import ThemeSwitch from "./theme-switch"
 
 const variantsItems = {
@@ -52,6 +52,7 @@ const Item = styled(motion.li)(
   css({
     listStyleType: "none",
     px: "1rem",
+    whiteSpace: "nowrap",
   })
 )
 
@@ -73,11 +74,12 @@ const StyledLink = styled(Link)(
 const AnimatedLink = motion.custom(StyledLink)
 
 export const Navigation = ({ links }) => {
+  const intl = useIntl()
   return (
     <Items variants={variantsItems}>
-      {links.map(link => (
+      {links.map(({ key, path }) => (
         <Item
-          key={link.name}
+          key={key}
           variants={variantsItem}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
@@ -86,7 +88,7 @@ export const Navigation = ({ links }) => {
             activeClassName="active"
             whileHover={{ fontWeight: "bold" }}
             whileTap={{ fontWeight: "bold" }}
-            to={link.path}
+            to={path}
           >
             <h2
               sx={{
@@ -94,7 +96,7 @@ export const Navigation = ({ links }) => {
                 fontWeight: "inherit",
               }}
             >
-              {link.name}
+              {intl.formatMessage({ id: `menu.${key}` })}
             </h2>
           </AnimatedLink>
         </Item>

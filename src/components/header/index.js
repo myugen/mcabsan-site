@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Flex, Box, css } from "theme-ui"
 import styled from "@emotion/styled"
-import { Link } from "gatsby"
+import { Link } from "gatsby-plugin-intl"
 import { string, object, arrayOf } from "prop-types"
 import { motion } from "framer-motion"
 

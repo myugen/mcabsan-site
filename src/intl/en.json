@@ -1,0 +1,48 @@
+{
+  "common": {
+    "recaptcha": {
+      "partial_one": "This site is protected by reCAPTCHA and the Google",
+      "link_one": "Privacy Policy",
+      "partial_two": "and",
+      "link_two": "Terms of Service",
+      "partial_three": "apply"
+    },
+    "contact": {
+      "title": "Contact me!",
+      "message": {
+        "placeholder": "Whatever you want ✍️"
+      },
+      "send": "Send"
+    },
+    "reading_time": "{minute, plural, one {# minute} other {# minutes}} read"
+  },
+  "menu": {
+    "posts": "Posts",
+    "about": "About",
+    "theme": "Activate {theme} mode"
+  },
+  "page": {
+    "home": {
+      "whoami": {
+        "title": "Hi! I'm Miguel Cabrera",
+        "description": "I am a passionate fullstack developer based in Tenerife, Canary Island, who loves to be involved in the whole process of creating software to keep learning and facing new challenges every day."
+      }
+    },
+    "posts": {
+      "empty": "No posts yet. Stay tuned!!!"
+    },
+    "about": {
+      "info": "This is About info!"
+    }
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "validation": {
+    "required": "Required!",
+    "min": "Too short!",
+    "max": "Too long!",
+    "mail": "Email not valid!"
+  }
+}

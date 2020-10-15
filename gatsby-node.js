@@ -24,6 +24,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+
   result.data.allDatoCmsPost.edges.forEach(({ node }) => {
     createPage({
       path: `/posts/${node.code}`,
