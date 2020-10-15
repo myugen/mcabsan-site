@@ -13,7 +13,8 @@
         "placeholder": "Whatever you want ✍️"
       },
       "send": "Send"
-    }
+    },
+    "reading_time": "{minute, plural, one {# minute} other {# minutes}} read"
   },
   "menu": {
     "posts": "Posts",

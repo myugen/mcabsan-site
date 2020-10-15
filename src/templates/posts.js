@@ -16,6 +16,7 @@ const StyledLink = styled(Link)(
 
 const Posts = ({ data }) => {
   const posts = data.allDatoCmsPost.edges || []
+  const { formatMessage, formatDate } = useIntl()
   const NoPosts = () => {
     const { formatMessage } = useIntl()
     return (
@@ -38,15 +39,26 @@ const Posts = ({ data }) => {
         >
           {posts.map(({ node }) => (
             <Card key={node.code} sx={{ marginBottom: 2 }}>
-              <StyledLink to={node.code}>
+              <StyledLink to={`/posts/${node.code}`}>
                 <article>
                   <header>
                     <Image src={node.image.url} alt={node.image.alt} />
                     <h2 sx={{ my: 0 }}>
                       <Text variant="title">{node.title}</Text>
                     </h2>
-                    <small sx={{ fontSize: 1 }}>
-                      {`${node.datetime} · ${readingTime(node.body).text}`}
+                    <small sx={{ fontSize: 0 }}>
+                      {`${formatDate(node.datetime, {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })} · ${formatMessage(
+                        { id: "common.reading_time" },
+                        {
+                          minute: Math.ceil(
+                            readingTime(node.body).minutes.toFixed(2)
+                          ),
+                        }
+                      )}`}
                     </small>
                   </header>
                   <p sx={{ my: 0 }}>{node.description}</p>
@@ -70,7 +82,7 @@ export const query = graphql`
         node {
           code
           title
-          datetime(formatString: "MMMM DD, YYYY")
+          datetime
           description
           image {
             url
