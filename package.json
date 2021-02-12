@@ -24,7 +24,7 @@
     "@mdx-js/react": "^1.6.18",
     "@theme-ui/prism": "^0.3.0",
     "@theme-ui/typography": "^0.3.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "formik": "^2.1.5",
     "framer-motion": "^2.7.5",
